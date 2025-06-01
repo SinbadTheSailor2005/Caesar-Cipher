@@ -33,8 +33,8 @@ public class CaesarCipher implements Cipher {
       if (isLatin(c)) {
         boolean isUpper = Character.isUpperCase(c);
         int latinIndex =
-                LATIN_ALPHABET.indexOf(
-                        (Character.toLowerCase(c)) + n) % LATIN_ALPHABET_LEN;
+                (LATIN_ALPHABET.indexOf(
+                        Character.toLowerCase(c))+n)% LATIN_ALPHABET_LEN;
         if (latinIndex < 0) latinIndex += LATIN_ALPHABET_LEN;
         shiftedChar = LATIN_ALPHABET.charAt(latinIndex);
         shiftedMessage.append(isUpper ? Character.toUpperCase(shiftedChar) :
@@ -43,8 +43,8 @@ public class CaesarCipher implements Cipher {
 
         boolean isUpper = Character.isUpperCase(c);
         int ruIndex =
-                RUSSIAN_ALPHABET.indexOf(
-                        (Character.toLowerCase(c)) + n) % RUSSIAN_ALPHABET_LEN;
+                (RUSSIAN_ALPHABET.indexOf(
+                        Character.toLowerCase(c)) + n) % RUSSIAN_ALPHABET_LEN;
         if (ruIndex < 0)ruIndex += RUSSIAN_ALPHABET_LEN;
         shiftedChar = RUSSIAN_ALPHABET.charAt(ruIndex);
         shiftedMessage.append(isUpper ? Character.toUpperCase(shiftedChar) :
