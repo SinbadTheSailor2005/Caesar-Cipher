@@ -93,17 +93,17 @@ public class ReversePolishNotation {
     return (op == '+' || op == '-') ? 1 : 2;
   }
 
-  public int evaluateExpression(String expression) {
+  public double evaluateExpression(String expression) {
     Deque<String> rpn = convertToReversePolishNotation(expression);
-    Stack<Integer> stack = new Stack<>();
+    Stack<Double> stack = new Stack<>();
 
     for (String token : rpn) {
       if (isOperator(token.charAt(0))) {
         if (stack.size() < 2) {
           throw new RuntimeException("Not enough operands for " + token);
         }
-        int b = stack.pop();
-        int a = stack.pop();
+        double b = stack.pop();
+        double a = stack.pop();
         switch (token.charAt(0)) {
           case '+': stack.push(a + b); break;
           case '-': stack.push(a - b); break;
@@ -114,7 +114,7 @@ public class ReversePolishNotation {
         }
       } else {
 
-          stack.push(Integer.parseInt(token));
+          stack.push(Double.parseDouble(token));
 
       }
     }

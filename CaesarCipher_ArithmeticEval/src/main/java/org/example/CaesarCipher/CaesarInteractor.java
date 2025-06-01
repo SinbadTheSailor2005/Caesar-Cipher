@@ -70,8 +70,11 @@ public class CaesarInteractor implements Interactor {
   private List<String> readFromStdin(BufferedReader reader) throws IOException {
     List<String> lines = new ArrayList<>();
     System.out.println("Enter mode (encryption/decryption):");
-    lines.add(reader.readLine()
-            .strip());
+    String mode = reader.readLine().strip();
+    if (!(mode.equals("encryption") || mode.equals("decryption"))) {
+      throw new RuntimeException("Invalid mode: " + mode);
+    }
+    lines.add(mode);
 
     System.out.println("Enter message:");
     lines.add(reader.readLine()
