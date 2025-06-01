@@ -9,5 +9,6 @@ public class Main {
 
         CaesarInteractor interactor = CaesarInteractor.getInstance();
         interactor.interact();
+
     }
 }

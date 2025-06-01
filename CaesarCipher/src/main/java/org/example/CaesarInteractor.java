@@ -10,8 +10,7 @@ import java.util.*;
 
 public class CaesarInteractor implements Interactor {
 
-  private static final char MOST_FREQUENT_CHAR_RUSSIAN = 'о';
-  private static final char MOST_FREQUENT_CHAR_LATIN = 'e';
+
   private static final CaesarCipher caesarCipher = CaesarCipher.getInstance();
   private static final CaesarInteractor CaesarInteractorInstance =
           new CaesarInteractor();
@@ -78,7 +77,9 @@ public class CaesarInteractor implements Interactor {
     lines.add(reader.readLine()
             .strip());
 
-    System.out.println("Enter shift (optional for decryption):");
+    System.out.println("Enter shift (optional for decryption - put just " +
+            "enter)" +
+            " :");
     String shiftLine = reader.readLine()
             .strip();
     if (!shiftLine.isBlank()) {
@@ -111,7 +112,7 @@ public class CaesarInteractor implements Interactor {
       if (mode.equals("encryption")) {
         throw new RuntimeException("No shift value to encrypt message");
       }
-      shift = calculateShift(message);
+      shift = caesarCipher.calculateShift(message);
     }
 
     String result = mode.equals("encryption")
@@ -122,35 +123,5 @@ public class CaesarInteractor implements Interactor {
     System.out.println(result);
   }
 
-  private int calculateShift(String message) {
-    Map<Character, Integer> frequency = calcFrequency(message);
 
-    Optional<Character> mostFrequentChar = frequency.entrySet()
-            .stream()
-            .max(Map.Entry.comparingByValue())
-            .map(Map.Entry::getKey);
-
-    if (mostFrequentChar.isPresent()) {
-      char mostFreq = mostFrequentChar.get();
-      if (caesarCipher.isLatin(mostFreq)) {
-        return mostFreq- MOST_FREQUENT_CHAR_LATIN;
-      } else if (caesarCipher.isRussian(mostFreq)) {
-        return mostFreq - MOST_FREQUENT_CHAR_RUSSIAN;
-      }
-    }
-
-    throw new RuntimeException(
-            "Message is empty or does not contain valid letters");
-  }
-
-  private Map<Character, Integer> calcFrequency(String message) {
-    Map<Character, Integer> freq = new HashMap<>();
-    for (char c : message.toLowerCase()
-            .toCharArray()) {
-      if (Character.isLetter(c)) {
-        freq.put(c, freq.getOrDefault(c, 0) + 1);
-      }
-    }
-    return freq;
-  }
 }
