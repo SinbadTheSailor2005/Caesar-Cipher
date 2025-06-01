@@ -1,4 +1,4 @@
-package org.example;
+package org.example.ArithmeticEvalAlgo;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -17,7 +17,7 @@ public class ReversePolishNotation {
   }
 
 
-  public Deque<String> convertToReversePolishNotation(String expression) {
+  private Deque<String> convertToReversePolishNotation(String expression) {
     Stack<String> operands = new Stack<>();
     ArrayDeque<String> output = new ArrayDeque<>();
     expectUnary = true;
@@ -93,7 +93,7 @@ public class ReversePolishNotation {
     return (op == '+' || op == '-') ? 1 : 2;
   }
 
-  public int evaluateReversePolishNotationExpression(String expression) {
+  public int evaluateExpression(String expression) {
     Deque<String> rpn = convertToReversePolishNotation(expression);
     Stack<Integer> stack = new Stack<>();
 
