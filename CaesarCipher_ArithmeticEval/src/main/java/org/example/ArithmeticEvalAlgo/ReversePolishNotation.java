@@ -34,7 +34,7 @@ public class ReversePolishNotation {
         }
         output.push(number.toString());
         i--;
-        expectUnary = false;
+        expectUnary = false; // after digit operands are binary
         continue;
       }
 
@@ -58,7 +58,7 @@ public class ReversePolishNotation {
 
       if (isOperator(c)) {
         String currentOp = String.valueOf(c);
-        if (c == '-' && expectUnary) {
+        if (c == '-' && expectUnary) { // -5 -> 0-5
           output.push("0");
         }
 

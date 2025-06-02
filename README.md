@@ -14,10 +14,28 @@ encryption
 
 
 ```
-The Caesar cipher implementation supports decryption without given shifted value using **frequency analysis algorithm**. The tool considers letters *о* and *e* as the most frequent letter in Russian and Latin language correspondingly. So, if the text is huge enough, algorithm could successfully decrypt message. 
+- The Caesar cipher implementation supports decryption without given shifted value using **frequency analysis algorithm**.
+- The tool considers letters *о* and *e* as the most frequent letter in Russian and Latin language correspondingly. So, if the text is huge enough, algorithm could successfully decrypt message. 
 
-The arithmetic evaluation algorithm utilize reverse polish notation. First, it convert given expression into polish notation.  Then, it calculates the output. The algorithm obeys PEMDAS/BODMAS rules and supports the following operations:
- +-*/. All negative values should be in brackets (i.e. (-2)), except the cases  when negative number is located in the beginning of the expression or goes right after open bracket.
+- The arithmetic evaluation algorithm utilize reverse polish notation. First, it convert given expression into polish notation.  Then, it calculates the output. The algorithm obeys PEMDAS/BODMAS rules and supports the following operations:
+ +-*/. 
+## Assumptions
+- All negative values should be in brackets (i.e. (-2)), except the cases  when negative number is located in the beginning of the expression or goes right after open bracket.
+
+ ❌ 5 * -2
+
+ ✅ 5 * (-2)
+
+ ✅ - 2 + 3
+
+ ✅ (-2 * 3)
+
+
+- Multiplication sign should not be omitted before open brackets
+
+❌ 5 (4-3)
+  
+✅ 5 * (4-3)
 ## How to Build
 
 Go to source root of the project
