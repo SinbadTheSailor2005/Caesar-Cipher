@@ -19,7 +19,6 @@ encryption
 
 - The arithmetic evaluation algorithm utilize reverse polish notation. First, it convert given expression into polish notation.  Then, it calculates the output. The algorithm obeys PEMDAS/BODMAS rules and supports the following operations:
  +-*/. 
-## Assumptions
 - All negative values should be in brackets (i.e. (-2)), except the cases  when negative number is located in the beginning of the expression or goes right after open bracket.
 
  ❌ 5 * -2
@@ -36,6 +35,9 @@ encryption
 ❌ 5 (4-3)
   
 ✅ 5 * (4-3)
+
+- The Program assumes that Russian has 33 letters, while Lation 26
+
 ## How to Build
 
 Go to source root of the project
