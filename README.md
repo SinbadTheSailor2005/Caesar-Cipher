@@ -30,7 +30,7 @@ encryption
  ✅ (-2 * 3)
 
 
-- Multiplication sign should not be omitted before open brackets
+- Multiplication and division signs should not be omitted before open brackets
 
 ❌ 5 (4-3)
   
