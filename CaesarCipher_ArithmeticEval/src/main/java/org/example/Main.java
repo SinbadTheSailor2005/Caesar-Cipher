@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.ArithmeticEvalAlgo.ReversePolishNotation;
+import org.example.ArithmeticEvalAlgo.ReversePolishNotationInteractor;
 import org.example.CaesarCipher.CaesarCipher;
 import org.example.CaesarCipher.CaesarInteractor;
 
@@ -12,8 +13,9 @@ import java.io.InputStreamReader;
 public class Main {
   public static void main(String[] args) throws IOException {
     CaesarInteractor caesarInteractor = CaesarInteractor.getInstance();
-    ReversePolishNotation polishNotation = ReversePolishNotation.getInstance();
-    BufferedReader reader =
+    ReversePolishNotationInteractor reversePolishNotationInteractor =
+            ReversePolishNotationInteractor.getInstance();
+                    BufferedReader reader =
             new BufferedReader(new InputStreamReader(System.in));
     while (true) {
       System.out.println("""
@@ -25,7 +27,8 @@ public class Main {
                          3. Exit
                          
                          """);
-      String option = reader.readLine().strip();
+      String option = reader.readLine()
+              .strip();
       switch (option) {
         case "1":
           System.out.println("Caesar Cipher Algorithm was chosen");
@@ -34,14 +37,12 @@ public class Main {
         case "2":
           System.out.println("""
                              Arithmetic Expression Evaluation was chosen.
-                             Please, enter the expression
+                             
                              
                              """);
-          String expression = reader.readLine().strip();
-          double res = polishNotation.evaluateExpression(expression);
-          System.out.println("Answer: " + res);
+          reversePolishNotationInteractor.interact();
           break;
-        case "3" :
+        case "3":
           return;
       }
     }

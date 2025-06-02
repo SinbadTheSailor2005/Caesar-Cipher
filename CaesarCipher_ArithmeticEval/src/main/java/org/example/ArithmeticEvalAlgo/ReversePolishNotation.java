@@ -29,7 +29,8 @@ public class ReversePolishNotation {
 
       if (Character.isDigit(c)) {
         StringBuilder number = new StringBuilder();
-        while (i < expression.length() && Character.isDigit(expression.charAt(i))) {
+        while (i < expression.length() && Character.isDigit(
+                expression.charAt(i))) {
           number.append(expression.charAt(i++));
         }
         output.push(number.toString());
@@ -45,10 +46,12 @@ public class ReversePolishNotation {
       }
 
       if (c == ')') {
-        while (!operands.isEmpty() && !operands.peek().equals("(")) {
+        while (!operands.isEmpty() && !operands.peek()
+                .equals("(")) {
           output.push(operands.pop());
         }
-        if (operands.isEmpty() || !operands.peek().equals("(")) {
+        if (operands.isEmpty() || !operands.peek()
+                .equals("(")) {
           throw new RuntimeException("Invalid input: mismatched parentheses");
         }
         operands.pop();
@@ -62,8 +65,10 @@ public class ReversePolishNotation {
           output.push("0");
         }
 
-        while (!operands.isEmpty() && isOperator(operands.peek().charAt(0))
-                && precedence(operands.peek().charAt(0)) >= precedence(c)) {
+        while (!operands.isEmpty() && isOperator(operands.peek()
+                .charAt(0))
+                && precedence(operands.peek()
+                .charAt(0)) >= precedence(c)) {
           output.push(operands.pop());
         }
         operands.push(currentOp);
@@ -105,16 +110,23 @@ public class ReversePolishNotation {
         double b = stack.pop();
         double a = stack.pop();
         switch (token.charAt(0)) {
-          case '+': stack.push(a + b); break;
-          case '-': stack.push(a - b); break;
-          case '*': stack.push(a * b); break;
+          case '+':
+            stack.push(a + b);
+            break;
+          case '-':
+            stack.push(a - b);
+            break;
+          case '*':
+            stack.push(a * b);
+            break;
           case '/':
             if (b == 0) throw new ArithmeticException("Division by 0");
-            stack.push(a / b); break;
+            stack.push(a / b);
+            break;
         }
       } else {
 
-          stack.push(Double.parseDouble(token));
+        stack.push(Double.parseDouble(token));
 
       }
     }

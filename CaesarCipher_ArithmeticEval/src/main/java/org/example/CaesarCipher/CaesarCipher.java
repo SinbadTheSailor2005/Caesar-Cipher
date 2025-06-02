@@ -34,7 +34,7 @@ public class CaesarCipher implements Cipher {
         boolean isUpper = Character.isUpperCase(c);
         int latinIndex =
                 (LATIN_ALPHABET.indexOf(
-                        Character.toLowerCase(c))+n)% LATIN_ALPHABET_LEN;
+                        Character.toLowerCase(c)) + n) % LATIN_ALPHABET_LEN;
         if (latinIndex < 0) latinIndex += LATIN_ALPHABET_LEN;
         shiftedChar = LATIN_ALPHABET.charAt(latinIndex);
         shiftedMessage.append(isUpper ? Character.toUpperCase(shiftedChar) :
@@ -45,7 +45,7 @@ public class CaesarCipher implements Cipher {
         int ruIndex =
                 (RUSSIAN_ALPHABET.indexOf(
                         Character.toLowerCase(c)) + n) % RUSSIAN_ALPHABET_LEN;
-        if (ruIndex < 0)ruIndex += RUSSIAN_ALPHABET_LEN;
+        if (ruIndex < 0) ruIndex += RUSSIAN_ALPHABET_LEN;
         shiftedChar = RUSSIAN_ALPHABET.charAt(ruIndex);
         shiftedMessage.append(isUpper ? Character.toUpperCase(shiftedChar) :
                 shiftedChar);
@@ -77,9 +77,11 @@ public class CaesarCipher implements Cipher {
     if (mostFrequentChar.isPresent()) {
       char mostFreq = mostFrequentChar.get();
       if (this.isLatin(mostFreq)) {
-        return LATIN_ALPHABET.indexOf(mostFreq) - LATIN_ALPHABET.indexOf(MOST_FREQUENT_CHAR_LATIN);
+        return LATIN_ALPHABET.indexOf(mostFreq) - LATIN_ALPHABET.indexOf(
+                MOST_FREQUENT_CHAR_LATIN);
       } else if (this.isRussian(mostFreq)) {
-        return RUSSIAN_ALPHABET.indexOf(mostFreq) - RUSSIAN_ALPHABET.indexOf(MOST_FREQUENT_CHAR_RUSSIAN);
+        return RUSSIAN_ALPHABET.indexOf(mostFreq) - RUSSIAN_ALPHABET.indexOf(
+                MOST_FREQUENT_CHAR_RUSSIAN);
       }
     }
 
