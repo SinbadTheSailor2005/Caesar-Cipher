@@ -37,8 +37,6 @@ public class Main {
         case "2":
           System.out.println("""
                              Arithmetic Expression Evaluation was chosen.
-                             
-                             
                              """);
           reversePolishNotationInteractor.interact();
           break;
